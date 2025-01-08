@@ -1,0 +1,195 @@
+
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head><script src="../assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.111.3">
+    <title>State Income Tax Dashboard</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="assets/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+    
+
+
+
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+    </style>
+
+    
+  </head>
+  <body>
+
+    
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Census mapping template</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-3 d-md-block bg-body-tertiary sidebar collapse">
+      <div class="position-sticky pt-3 sidebar-sticky">
+        <div style="border:none; background-color: #b4b3b6;">
+
+      </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-sm" id="table"  data-toggle="table"
+          data-sort-name="name"
+          data-sort-order="desc"
+          data-height="900"
+          data-width="400"
+          >
+            <thead>
+              <tr>
+                <th scope="col" data-field="state" data-sortable="true">State</th>  
+                <th scope="col" data-field="county" data-sortable="true">County</th>  
+
+                <th scope="col" data-field="qf" data-sortable="true">% of kids without insurance</th>                
+              
+                <!-- CREATE ADDITIONAL ROWS HERE -->
+                <!-- CREATE ADDITIONAL ROWS HERE -->
+                <!-- CREATE ADDITIONAL ROWS HERE -->
+                <!-- CREATE ADDITIONAL ROWS HERE -->
+
+
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+    </nav>
+
+    <main class="col-md-10 ms-sm-auto col-lg-9 px-md-4">
+      <div class="h-100 d-inline-block" style="width: 100%;" id="map">
+      <div id="viewDiv"></div>
+      </div>
+      <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+    </main>
+  </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://js.arcgis.com/4.26/esri/themes/light/main.css"
+/>
+<link href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css" rel="stylesheet">
+
+<script src="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.js"></script>
+<script src="https://js.arcgis.com/4.26/"></script>
+<script src="map.js"></script>
+    <body>
+      <script>$(document).ready(function(){
+        $("input[data-type='number']").keyup(function(event){
+          // skip for arrow keys
+          if(event.which >= 37 && event.which <= 40){
+              event.preventDefault();
+          }
+          var $this = $(this);
+          var num = $this.val().replace(/,/gi, "");
+          var num2 = num.split(/(?=(?:\d{3})+$)/).join(",");
+          // console.log(num2);
+          // the following line has been simplified. Revision history contains original.
+          $this.val(num2);
+      });
+      function priceSorter(a, b) {
+    var aa = a.replace(',', '')
+    var bb = b.replace(',', '')
+    return aa - bb
+  }
+    });</script>
+    </body>
+  
+</html>
