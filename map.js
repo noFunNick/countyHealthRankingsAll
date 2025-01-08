@@ -154,7 +154,7 @@ const colors = ["#fef0d9", "#fdcc8a", "#fc8d59", "#e34a33", "#b30000"];
     let query = url.createQuery();
     query.where = "OBJECTID < 2000"
     query.returnGeometry = true;
-    query.outFields = [ queryField, "OBJECTID", "Name", "State" ];
+    query.outFields = [ queryField, "OBJECTID", "county", "state" ];
 
     url.queryFeatures(query)
     .then(function(response){
@@ -162,10 +162,10 @@ const colors = ["#fef0d9", "#fdcc8a", "#fc8d59", "#e34a33", "#b30000"];
     response.features.forEach(function(feature, index){
         let gfx = new Graphic({
             geometry: feature.geometry,
-            attributes: { "queryField": feature.attributes[queryField], "county": feature.attributes.NAME, "state": feature.attributes.State,  "ObjectId": feature.attributes.OBJECTID}                   
+            attributes: { "queryField": feature.attributes[queryField], "county": feature.attributes.county, "state": feature.attributes.state,  "ObjectId": feature.attributes.OBJECTID}                   
           });
-          var state = feature.attributes.State
-          var county = feature.attributes.NAME
+          var state = feature.attributes.state
+          var county = feature.attributes.county
           var qf = feature.attributes[queryField]     
           if(qf > 15|| qf < 2 && qf != null){
     $table.bootstrapTable('insertRow', {
@@ -191,7 +191,7 @@ const colors = ["#fef0d9", "#fdcc8a", "#fc8d59", "#e34a33", "#b30000"];
         let query2 = url.createQuery();
         query2.where = "OBJECTID >= 2000"
         query2.returnGeometry = true;
-        query2.outFields = [ queryField, "OBJECTID", "Name", "State" ];
+        query2.outFields = [ queryField, "OBJECTID", "county", "state" ];
     
         url.queryFeatures(query2)
         .then(function(response){
@@ -199,10 +199,10 @@ const colors = ["#fef0d9", "#fdcc8a", "#fc8d59", "#e34a33", "#b30000"];
         response.features.forEach(function(feature, index){
             let gfx = new Graphic({
                 geometry: feature.geometry,
-                attributes: {"queryField": feature.attributes[queryField] , "county": feature.attributes.NAME, "state": feature.attributes.State,  "ObjectId": feature.attributes.OBJECTID}                   
+                attributes: {"queryField": feature.attributes[queryField] , "county": feature.attributes.county, "state": feature.attributes.state,  "ObjectId": feature.attributes.OBJECTID}                   
               });
-              var state = feature.attributes.State
-              var county = feature.attributes.NAME
+              var state = feature.attributes.state
+              var county = feature.attributes.county
               var qf = feature.attributes[queryField]        
               graphics.push(gfx)
               if(qf > 15 || qf <2 && qf != null){
