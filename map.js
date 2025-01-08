@@ -23,12 +23,13 @@ require([
       view: view
     });
    
+
     view.ui.add(legend, "bottom-left");
     var $table = $('#table')
     var queryField = "v122_rawvalue"
     var queryFieldDescription = "Uninsured Children"
     var fieldName = queryFieldDescription.replace(/ /g, "_").toLowerCase()
-    var url = "https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/2021_County_Health_Rankings/FeatureServer/2"
+    var url = "https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/County_Health_Rankings_2023/FeatureServer/2"
     
 // Esri color ramps - Red 6
 // #fef0d9ff,#fdcc8aff,#fc8d59ff,#e34a33ff,#b30000ff
